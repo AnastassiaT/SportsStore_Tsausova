@@ -7,25 +7,28 @@ namespace SportsStore.WebUI.HtmlHelpers
 {
     public static class PagingHelpers
     {
-        public static MvcHtmlString PageLinks(this HtmlHelper html,
-        PagingInfo pagingInfo,
-        Func<int, string> pageUrl)
+        public static class PagingHelpers
         {
-            StringBuilder result = new StringBuilder();
-            for (int i = 1; i <= pagingInfo.TotalPages; i++)
+            public static MvcHtmlString PageLinks(this HtmlHelper html,
+            PagingInfo pagingInfo,
+            Func<int, string> pageUrl)
             {
-                TagBuilder tag = new TagBuilder("a");
-                tag.MergeAttribute("href", pageUrl(i));
-                tag.InnerHtml = i.ToString();
-                if (i == pagingInfo.CurrentPage)
+                StringBuilder result = new StringBuilder();
+                for (int i = 1; i <= pagingInfo.TotalPages; i++)
                 {
-                    tag.AddCssClass("selected");
-                    tag.AddCssClass("btn-primary");
+                    TagBuilder tag = new TagBuilder("a");
+                    tag.MergeAttribute("href", pageUrl(i));
+                    tag.InnerHtml = i.ToString();
+                    if (i == pagingInfo.CurrentPage)
+                    {
+                        tag.AddCssClass("selected");
+                        tag.AddCssClass("btn-primary");
+                    }
+                    tag.AddCssClass("btn btn-default");
+                    result.Append(tag.ToString());
                 }
-                tag.AddCssClass("btn btn-default");
-                result.Append(tag.ToString());
+                return MvcHtmlString.Create(result.ToString());
             }
-            return MvcHtmlString.Create(result.ToString());
         }
     }
 }
