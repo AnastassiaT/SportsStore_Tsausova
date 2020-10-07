@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        var line in Model.Cart.Lines
+        @foreach(var line in Model.Cart.Lines)
         {
         <tr>
             <td class="text-center">@line.Quantity</td>
@@ -28,7 +28,7 @@
                 @((line.Quantity * line.Product.Price).ToString("c"))
             </td>
             <td>
-                Html.BeginForm("RemoveFromCart", "Cart")
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
                 {
                 @Html.Hidden("ProductId", line.Product.ProductID)
                 @Html.HiddenFor(x => x.ReturnUrl)

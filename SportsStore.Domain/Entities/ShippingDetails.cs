@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-
-
-namespace SportsStore.Domain.Entities
+﻿namespace SportsStore.Domain.Entities
 {
     public class ShippingDetails
     {

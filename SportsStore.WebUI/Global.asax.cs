@@ -11,7 +11,7 @@ using SportsStore.WebUI.Infrastructure.Binders;
 namespace SportsStore.WebUI
 {
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
