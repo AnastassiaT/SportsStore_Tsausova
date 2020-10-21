@@ -171,14 +171,10 @@ new Product {ProductID = 5, Name = "P5", Category = "Cat3"}
             ProductController target = new ProductController(mock.Object);
             target.PageSize = 3;
             // Action - test the product counts for different categories
-            int res1 = ((ProductsListViewModel)target
-            .List("Cat1").Model).PagingInfo.TotalItems;
-            int res2 = ((ProductsListViewModel)target
-            .List("Cat2").Model).PagingInfo.TotalItems;
-            int res3 = ((ProductsListViewModel)target
-            .List("Cat3").Model).PagingInfo.TotalItems;
-            int resAll = ((ProductsListViewModel)target
-            .List(null).Model).PagingInfo.TotalItems;
+            int res1 = ((ProductsListViewModel)target.List("Cat1").Model).PagingInfo.TotalItems;
+            int res2 = ((ProductsListViewModel)target.List("Cat2").Model).PagingInfo.TotalItems;
+            int res3 = ((ProductsListViewModel)target.List("Cat3").Model).PagingInfo.TotalItems;
+            int resAll = ((ProductsListViewModel)target.List(null).Model).PagingInfo.TotalItems;
             // Assert
             Assert.AreEqual(res1, 2);
             Assert.AreEqual(res2, 2);
